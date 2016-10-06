@@ -1,18 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Create new product</h1>
-    {!! Form::open(['route'=>'products.store']) !!}
-    <div class="form-group">
-        {!! Form::label('name', 'Product name') !!}
-        {!! Form::text('name', '', ['class'=>'form-control', 'id'=>'content']) !!}
-    </div>
-    <div class="form-group">
-        {!! Form::label('description', 'Product description') !!}
-        {!! Form::text('description', '', ['class'=>'form-control', 'id'=>'content']) !!}
-    </div>
-    <div class="form-group">
-        {!! Form::submit('Save') !!}
-    </div>
-    {!! Form::close() !!}
+    <h1>All products</h1>
+    <table class="table table-responsive">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach($products as $product)
+            <tr>
+                <td>{{ $product->name }}</td>
+                <td>{{ $product->description }}</td>
+            </tr>
+        @endforeach
+        </tbody>
+    </table>
 @endsection
